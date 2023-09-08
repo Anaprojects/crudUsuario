@@ -1,7 +1,11 @@
+import { Injectable } from "@nestjs/common/decorators";
+@Injectable()
+
 export class usuarioRepository{
- private usuarios = []
+  private usuarios = [];
 
  async salvar(usuario){
+ 
     this.usuarios.push(usuario);
     // console.log(this.usuarios)
  }
