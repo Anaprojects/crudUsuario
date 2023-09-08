@@ -1,0 +1,4 @@
+npm start -> inicia o projeto
+npm run start: dev -> permite que você veja na tela as atualizações feitas na hora que elas são feitas (servidor de desenvolvimento )
+
+O que é o nest -> framework back-and com node js 
