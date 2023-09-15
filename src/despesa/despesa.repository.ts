@@ -1,12 +1,13 @@
-import { Injectable } from "@nestjs/common/decorators"
-
+import { Injectable } from "@nestjs/common";
 @Injectable()
-
-export class despesaRepository {
+export class despesaRepository{
     private despesas = [];
-    async salvar(despesa) {
+    async guardar (despesa){
         this.despesas.push(despesa)
-        console.log(this.despesas)
     }
-
+    async resultadoDeBusca(){
+        return this.despesas;
+    }
 }
+
+

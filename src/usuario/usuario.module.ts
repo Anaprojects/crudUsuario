@@ -1,4 +1,4 @@
- import { Module } from "@nestjs/common";
+import { Module } from "@nestjs/common";
 import { UsuarioController } from "./usuario.controller";
 import { usuarioRepository } from "./usario.repository";
 @Module({

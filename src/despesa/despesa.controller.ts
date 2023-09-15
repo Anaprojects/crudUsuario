@@ -1,12 +1,15 @@
-import { Body, Controller,Post } from "@nestjs/common";
+import { Controller, Post,Body,Get } from "@nestjs/common";
 import { despesaRepository } from "./despesa.repository";
-
 @Controller('/despesa')
- export class despesaController{
-    constructor ( private despesaRepository: despesaRepository){}
+export class CadasdroDespesa{
+    constructor (private despesaRepository:despesaRepository ){}
     @Post()
-    async criarDespesa(@Body() dadosDeDespesa){
-        this.despesaRepository.salvar(dadosDeDespesa)
-        return dadosDeDespesa;
+    async criaDespesa(@Body() dadosDeDespesa) {
+       this.despesaRepository.guardar(dadosDeDespesa)
+       return dadosDeDespesa
     }
- }
+    @Get()
+    async listaDespesa(){
+        return this.despesaRepository.resultadoDeBusca();
+    }
+}
