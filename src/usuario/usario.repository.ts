@@ -9,7 +9,14 @@ export class usuarioRepository{
     this.usuarios.push(usuario);
     // console.log(this.usuarios)
  }
- async retorno(){
-   return this.usuarios;
- }
+  async retorno(){
+    return this.usuarios;
+  }
+  async existeEsteEmail(email: string) {
+    const possivelEmail = this.usuarios.find(
+      usuario => usuario.email === email
+    );
+    return possivelEmail !== undefined
+  }
+
 }
