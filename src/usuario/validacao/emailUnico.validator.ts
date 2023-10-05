@@ -8,10 +8,8 @@ import { Injectable } from "@nestjs/common";
 export class emailUnicoValidador implements ValidatorConstraintInterface {
 
     constructor(private  usuarioRepository: usuarioRepository){
-
     }
-
-   async validate(value: any, validationArguments?: ValidationArguments): Promise<boolean> {
+        async validate(value: any, validationArguments?: ValidationArguments): Promise<boolean> {
         const emailExiste = await this.usuarioRepository.existeEsteEmail(value)
         return !emailExiste;
     }
