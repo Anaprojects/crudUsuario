@@ -6,6 +6,7 @@ export class CriarUsuarioDto{
     @IsNotEmpty()
     nome: string;
 
+   
     @IsNumber()
     senha: number;
     
