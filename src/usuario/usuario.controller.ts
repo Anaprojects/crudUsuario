@@ -9,6 +9,8 @@ import { AtualizaUsuarioDto } from "./dto/atualiza-usuario.dto";
 @Controller('/cadastro')
 export class UsuarioController {
     constructor (private usuarioRepository: usuarioRepository) {}
+
+    // essa rota cadastra os usuários
     @Post()
         async criarUsuario(@Body() dadosDeCadastro: CriarUsuarioDto){
             const usuarioEntity = new UsuarioEntity();
@@ -21,10 +23,12 @@ export class UsuarioController {
                 id: usuarioEntity.id, message :" usuário cadastrado com sucesso "
             }
         }
+
+        // essa rota lista os usuários
     @Get()
         async listadeDados(){
-      const usuariosSalvos = await this.usuarioRepository.retorno();
-      const usuariosLista = usuariosSalvos.map(
+        const usuariosSalvos = await this.usuarioRepository.retorno();
+        const usuariosLista = usuariosSalvos.map(
         usuario => new ListaUsuarioDTO(
             usuario.id,
             usuario.nome
@@ -32,6 +36,8 @@ export class UsuarioController {
       );
       return usuariosLista;
     }
+
+    // essa rota atualiza os usuários
     @Put('/:id')
     async atualizaUsuario(@Param('id') id: string, @Body() atualizaDados: AtualizaUsuarioDto){
         const usuarioAtualizado = await this.usuarioRepository.atualiza(id, atualizaDados);
@@ -40,6 +46,8 @@ export class UsuarioController {
                 mensagem: "Usuário atualizado com sucesso ✅ "
             }
     }
+    
+    // essa rota deleta os usuários
     @Delete('/:id')
     async removeUsuario(@Param('id') id: string){
         const usuarioRemovido = await this.usuarioRepository.remove(id)

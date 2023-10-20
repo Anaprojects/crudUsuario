@@ -29,7 +29,8 @@ export class usuarioRepository{
       }
       return possivelUsuario;
   }
-
+  
+  // função que irá atualizar o usuário
   async atualiza( id:string, dadosDeAtualizacao:Partial<UsuarioEntity>){
     const usuario = this.buscaPorId(id)
       Object.entries(dadosDeAtualizacao).forEach(([chave, valor ]) => {
