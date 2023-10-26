@@ -11,6 +11,6 @@ export class AtualizaDespesaDto {
   @MinLength(3)
   @IsNotEmpty()
   @IsOptional()
-  tipo: string;
+  categoria: string;
 
 }

@@ -12,13 +12,13 @@ export class CadasdroDespesa{
     @Post()
     async criaDespesa(@Body() dadosDeDespesa: CriarDespesaDto) {
         const despesaEntity = new DespesaEntity();
-        despesaEntity.tipo = dadosDeDespesa.tipo;
+        despesaEntity.categoria = dadosDeDespesa.categoria;
         despesaEntity.valor = dadosDeDespesa.valor;
         despesaEntity.id = uuid()
 
        this.despesaRepository.guardar(despesaEntity)
        return {
-        id : despesaEntity.id, message: "despesa cadastrada com sucesso" 
+        id : despesaEntity.id, message: "Despesa cadastrada com sucesso 🥰" 
        }
        
     }
@@ -34,7 +34,7 @@ export class CadasdroDespesa{
         const despesaAtualizada = await this.despesaRepository.update (id,atualizaDadosDespesa);
             return{
                 despesa: despesaAtualizada,
-                mensagem: "Despesa Atualizada com sucesso 👌"
+                mensagem: "Despesa Atualizada com sucesso ✅"
             }
     }
 
@@ -43,7 +43,7 @@ export class CadasdroDespesa{
         const despesaRemovida = await this.despesaRepository.delete(id)
         return{
             depesa: despesaRemovida,
-            mensagem: "depesa removida com sucesso✨"
+            mensagem: "Depesa removida com sucesso✨"
         }
     }
 

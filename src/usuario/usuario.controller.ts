@@ -20,7 +20,7 @@ export class UsuarioController {
             usuarioEntity.id = uuid()
             this.usuarioRepository.salvar(usuarioEntity)
              return {
-                id: usuarioEntity.id, message :" usuário cadastrado com sucesso "
+                id: usuarioEntity.id, message :" Usuário cadastrado com sucesso🥰 "
             }
         }
 
@@ -54,7 +54,7 @@ export class UsuarioController {
 
         return{
             usuario: usuarioRemovido,
-            mensagem: 'usuário deletado com sucesso👌😍'
+            mensagem: 'Usuário deletado com sucesso✨'
      
         }
     }

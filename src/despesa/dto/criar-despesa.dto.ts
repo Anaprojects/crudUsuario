@@ -9,6 +9,6 @@ export class CriarDespesaDto {
 
   @MinLength(3)
   @IsNotEmpty()
-  tipo: string;
+  categoria: string;
 
 }

@@ -1,4 +1,5 @@
 import { Injectable } from "@nestjs/common/decorators";
+import { BadRequestException } from '@nestjs/common';
 import { DespesaEntity } from "./despesa.entity";
 
 @Injectable()
@@ -19,9 +20,12 @@ export class despesaRepository{
             despesaSalva => despesaSalva.id === id
         );
         if(!possivelDespesa){
-            throw new Error('Ops, essa despesa não foi encontrada 😦')
+            // throw new Error('Ops, essa despesa não foi encontrada 😦')
+            throw new BadRequestException('Ops, essa despesa não foi encontrada 😦')
         }
-        return possivelDespesa;
+        // return {message: "Essa despesa não existe"}
+      
+         return possivelDespesa;
 
     }
 
