@@ -1,5 +1,6 @@
 import { Injectable } from "@nestjs/common/decorators";
 import { UsuarioEntity } from "./usuario.entity";
+import { BadRequestException } from "@nestjs/common";
 @Injectable()
 
 export class usuarioRepository{
@@ -25,7 +26,7 @@ export class usuarioRepository{
       usuarioSalvo =>  usuarioSalvo.id === id  
     );
       if(!possivelUsuario){
-        throw new Error('Usuário não existe')
+        throw new BadRequestException('Ops esse usuário não foi encontrado!😦')
       }
       return possivelUsuario;
   }
