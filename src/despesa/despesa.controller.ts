@@ -1,8 +1,9 @@
-import { Controller, Post,Body,Get,Param,Put} from "@nestjs/common";
+import { Controller, Post,Body,Get,Param,Put,Delete} from "@nestjs/common";
 import { despesaRepository } from "./despesa.repository";
 import{CriarDespesaDto}from "./dto/criar-despesa.dto";
 import { DespesaEntity } from "./despesa.entity";
 import{v4 as uuid} from 'uuid'
+import { AtualizaDespesaDto } from "./dto/atualiza-despesa.dto";
 
 @Controller('/despesa')
 export class CadasdroDespesa{
@@ -27,6 +28,23 @@ export class CadasdroDespesa{
         return this.despesaRepository.resultadoDeBusca();
     }
 
-    
+    //essa rota atualiza despesa
+    @Put('/:id')
+    async atualizaDespesa(@Param('id') id: string, @Body() atualizaDadosDespesa:AtualizaDespesaDto ){
+        const despesaAtualizada = await this.despesaRepository.update (id,atualizaDadosDespesa);
+            return{
+                despesa: despesaAtualizada,
+                mensagem: "Despesa Atualizada com sucesso 👌"
+            }
+    }
+
+    @Delete('/:id')
+    async removeDespesa(@Param('id') id: string){
+        const despesaRemovida = await this.despesaRepository.delete(id)
+        return{
+            depesa: despesaRemovida,
+            mensagem: "depesa removida com sucesso✨"
+        }
+    }
 
 }
