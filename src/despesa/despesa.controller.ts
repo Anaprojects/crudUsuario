@@ -8,6 +8,7 @@ import { AtualizaDespesaDto } from "./dto/atualiza-despesa.dto";
 @Controller('/despesa')
 export class CadasdroDespesa{
     constructor (private despesaRepository:despesaRepository ){}
+    
     // estou cadastradrando despesa
     @Post()
     async criaDespesa(@Body() dadosDeDespesa: CriarDespesaDto) {
@@ -22,11 +23,14 @@ export class CadasdroDespesa{
        }
        
     }
+
     // estou listando as despesas
     @Get()
     async listaDespesa(){
         return this.despesaRepository.resultadoDeBusca();
     }
+
+
 
     //essa rota atualiza despesa
     @Put('/:id')
@@ -37,6 +41,8 @@ export class CadasdroDespesa{
                 mensagem: "Despesa Atualizada com sucesso ✅"
             }
     }
+
+
 
     @Delete('/:id')
     async removeDespesa(@Param('id') id: string){
